@@ -9,7 +9,8 @@ angular.module('quizzes').controller('QuizzesController', ['$scope', '$statePara
 		$scope.create = function() {
 			// Create new Quiz object
 			var quiz = new Quizzes ({
-				name: this.name
+				name: this.name,
+				description: this.description
 			});
 
 			// Redirect after save
@@ -18,6 +19,7 @@ angular.module('quizzes').controller('QuizzesController', ['$scope', '$statePara
 
 				// Clear form fields
 				$scope.name = '';
+				$scope.description = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

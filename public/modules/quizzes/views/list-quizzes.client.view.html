@@ -10,7 +10,8 @@
 				by
 				<span data-ng-bind="quiz.user.displayName"></span>
 			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="quiz.name"></h4>
+            <h4 class="list-group-item-heading" data-ng-bind="quiz.name"></h4>
+			<p class="list-group-item-heading" data-ng-bind="quiz.description"></p>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!quizzes.$resolved || quizzes.length">

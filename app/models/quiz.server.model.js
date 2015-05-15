@@ -16,6 +16,12 @@ var QuizSchema = new Schema({
 		required: 'Please fill Quiz name',
 		trim: true
 	},
+	description: {
+		type: String,
+		default: '',
+		required: 'Please fill Quiz description',
+		trim: true
+	},
 	created: {
 		type: Date,
 		default: Date.now
