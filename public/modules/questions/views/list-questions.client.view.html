@@ -1,0 +1,19 @@
+<section data-ng-controller="QuestionsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Questions</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="question in questions" data-ng-href="#!/questions/{{question._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="question.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="question.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="question.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!questions.$resolved || questions.length">
+    	No Questions yet, why don't you <a href="/#!/questions/create">create one</a>?
+    </div>
+</section>

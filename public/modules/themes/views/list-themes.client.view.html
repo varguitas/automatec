@@ -1,0 +1,19 @@
+<section data-ng-controller="ThemesController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Themes</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="theme in themes" data-ng-href="#!/themes/{{theme._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="theme.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="theme.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="theme.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!themes.$resolved || themes.length">
+    	No Themes yet, why don't you <a href="/#!/themes/create">create one</a>?
+    </div>
+</section>
