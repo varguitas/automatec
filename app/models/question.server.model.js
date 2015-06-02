@@ -10,11 +10,34 @@ var mongoose = require('mongoose'),
  * Question Schema
  */
 var QuestionSchema = new Schema({
-	name: {
+	version_id: {
+		type: int,
+		default: 0,
+		required: 'Please fill Question version_id'
+	},
+	statement: {
 		type: String,
 		default: '',
-		required: 'Please fill Question name',
+		required: 'Please fill Question statement',
 		trim: true
+	},
+	value: {
+		type: int,
+		required: 'Please fill Question value'
+	},
+	options: {
+		type: [Option],
+		required: 'Please fill Question options'
+	},
+	type: {
+		type: String,
+		default: '',
+		required: 'Please fill Question type',
+		trim: true
+	},
+	modified: {
+		type: Date,
+		default: Date.now
 	},
 	created: {
 		type: Date,

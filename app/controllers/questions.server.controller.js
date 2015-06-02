@@ -105,3 +105,20 @@ exports.hasAuthorization = function(req, res, next) {
 	}
 	next();
 };
+
+
+
+/**
+ * Question is teacher middleware
+ */
+exports.isTeacher = function(req, res, next) {
+	console.log('---------------- 1');
+	console.log(req.user.roles);
+	if (req.user.roles.indexOf("admin") >-1) {
+		next();
+	}
+	if (req.user.roles.indexOf("teacher")  === -1) {
+		return res.status(403).send('User is not authorized: Is not a teacher. ');
+	}
+	next();
+};
