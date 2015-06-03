@@ -25,10 +25,20 @@ var QuestionSchema = new Schema({
 		type: int,
 		required: 'Please fill Question value'
 	},
-	options: {
-		type: [Option],
-		required: 'Please fill Question options'
-	},
+	options: [
+    {
+      list: {
+        type: Schema.OptionSchema,
+        require: true,
+        ref: "List"
+      },
+      allocations: [
+        {
+          type: Number,
+          required: true
+        }
+      ]
+    },
 	type: {
 		type: String,
 		default: '',
