@@ -5,102 +5,102 @@
  */
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
-	Question = mongoose.model('Question'),
+	Option = mongoose.model('Option'),
 	_ = require('lodash');
 
 /**
- * Create a Question
+ * Create a Option
  */
 exports.create = function(req, res) {
-	var question = new Question(req.body);
-	question.user = req.user;
+	var option = new Option(req.body);
+	option.user = req.user;
 
-	question.save(function(err) {
+	option.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(question);
+			res.jsonp(option);
 		}
 	});
 };
 
 /**
- * Show the current Question
+ * Show the current Option
  */
 exports.read = function(req, res) {
-	res.jsonp(req.question);
+	res.jsonp(req.option);
 };
 
 /**
- * Update a Question
+ * Update a Option
  */
 exports.update = function(req, res) {
-	var question = req.question ;
+	var option = req.option ;
 
-	question = _.extend(question , req.body);
+	option = _.extend(option , req.body);
 
-	question.save(function(err) {
+	option.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(question);
+			res.jsonp(option);
 		}
 	});
 };
 
 /**
- * Delete an Question
+ * Delete an Option
  */
 exports.delete = function(req, res) {
-	var question = req.question ;
+	var option = req.option ;
 
-	question.remove(function(err) {
+	option.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(question);
+			res.jsonp(option);
 		}
 	});
 };
 
 /**
- * List of Questions
+ * List of Options
  */
 exports.list = function(req, res) { 
-	Question.find().sort('-created').populate('user', 'displayName').exec(function(err, questions) {
+	Option.find().sort('-created').populate('user', 'displayName').exec(function(err, options) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(questions);
+			res.jsonp(options);
 		}
 	});
 };
 
 /**
- * Question middleware
+ * Option middleware
  */
-exports.questionByID = function(req, res, next, id) { 
-	Question.findById(id).populate('user', 'displayName').exec(function(err, question) {
+exports.optionByID = function(req, res, next, id) { 
+	Option.findById(id).populate('user', 'displayName').exec(function(err, option) {
 		if (err) return next(err);
-		if (! question) return next(new Error('Failed to load Question ' + id));
-		req.question = question ;
+		if (! option) return next(new Error('Failed to load Option ' + id));
+		req.option = option ;
 		next();
 	});
 };
 
 /**
- * Question authorization middleware
+ * Option authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.question.user.id !== req.user.id) {
+	if (req.option.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
 	next();

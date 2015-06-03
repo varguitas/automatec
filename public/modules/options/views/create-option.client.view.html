@@ -1,0 +1,29 @@
+<section data-ng-controller="OptionsController">
+    <div class="page-header">
+        <h1>New Option</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="option_text">Option text</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="option_text" id="option_text" class="form-control" placeholder="Option text" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="is_correct">Is correct?</label>
+                    <div class="controls">
+                        <input type="checkbox" data-ng-model="is_correct" id="is_correct" class="form-control" placeholder="Is correct?" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>

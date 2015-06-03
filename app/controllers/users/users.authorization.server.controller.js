@@ -52,3 +52,4 @@ exports.hasAuthorization = function(roles) {
 		});
 	};
 };
+
