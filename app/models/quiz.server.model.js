@@ -19,8 +19,17 @@ var QuizSchema = new Schema({
 	description: {
 		type: String,
 		default: '',
-		required: 'Please fill Quiz description',
-		trim: true
+	},
+	questions: [
+    	{
+        	type: Schema.ObjectId,
+        	require: true,
+        	ref: "Question"
+    	}
+    ],
+    modified: {
+		type: Date,
+		default: Date.now
 	},
 	created: {
 		type: Date,
