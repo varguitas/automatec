@@ -9,7 +9,8 @@ angular.module('quizzes').controller('QuizzesController', ['$scope', '$statePara
 		$scope.create = function() {
 			// Create new Quiz object
 			var quiz = new Quizzes ({
-				name: this.name
+				name: this.name,
+				description: this.description
 			});
 
 			// Redirect after save

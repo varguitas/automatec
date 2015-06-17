@@ -6,13 +6,13 @@ module.exports = function(app) {
 
 	// Quizzes Routes
 	app.route('/quizzes')
-		.get(quizzes.list)
-		.post(users.requiresLogin, quizzes.create);
+		.get(users.requiresLogin, users.hasAuthorization(['user', 'admin']), quizzes.list)
+		.post(users.requiresLogin, users.hasAuthorization(['user', 'admin']), quizzes.create);
 
 	app.route('/quizzes/:quizId')
-		.get(quizzes.read)
-		.put(users.requiresLogin, quizzes.hasAuthorization, quizzes.update)
-		.delete(users.requiresLogin, quizzes.hasAuthorization, quizzes.delete);
+		.get(users.requiresLogin, users.hasAuthorization(['user','admin']), quizzes.read)
+		.put(users.requiresLogin, users.hasAuthorization(['user','admin']), quizzes.hasAuthorization, quizzes.update)
+		.delete(users.requiresLogin, users.hasAuthorization(['user','admin']), quizzes.hasAuthorization, quizzes.delete);
 
 	// Finish by binding the Quiz middleware
 	app.param('quizId', quizzes.quizByID);
