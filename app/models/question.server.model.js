@@ -27,9 +27,9 @@ var QuestionSchema = new Schema({
 	},
 	options: [
     	{
-        	type: Schema.OptionSchema,
+        	type: Schema.ObjectId,
         	require: true,
-        	ref: "List"
+        	ref: "Option"
     	}
     ],
 	type: {
