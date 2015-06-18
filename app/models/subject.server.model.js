@@ -7,13 +7,13 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
- * Question Schema
+ * Subject Schema
  */
-var QuestionSchema = new Schema({
+var SubjectSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill Question name',
+		required: 'Please fill Subject name',
 		trim: true
 	},
 	created: {
@@ -26,4 +26,4 @@ var QuestionSchema = new Schema({
 	}
 });
 
-mongoose.model('Question', QuestionSchema);
+mongoose.model('Subject', SubjectSchema);
