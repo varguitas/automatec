@@ -23,12 +23,11 @@ var QuizSchema = new Schema({
 		default: '',
 		trim: true
 	},
-	questions: [
-	{
+	questions: [{
 		type: Schema.ObjectId,
 		require: true,
 		ref: "Question"
-	},
+	}],
 	created: {
 		type: Date,
 		default: Date.now
