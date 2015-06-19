@@ -14,8 +14,3 @@ module.exports = _.extend(
 	require('./users/users.password.server.controller'),
 	require('./users/users.profile.server.controller')
 );
-
-exports.addRole = function(userOid,role){};
-exports.removeRole = function(userOid,role){};
-exports.getRoles = function(userOid){};
-exports.getAllUserRoles = function(){};
