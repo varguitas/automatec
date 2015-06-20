@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
  */
 var QuestionSchema = new Schema({
 	version_id: {
-		type: int,
+		type: Number,
 		default: 0,
 		required: 'Please fill Question version_id'
 	},
@@ -22,14 +22,14 @@ var QuestionSchema = new Schema({
 		trim: true
 	},
 	value: {
-		type: int,
+		type: Number,
 		required: 'Please fill Question value'
 	},
 	options: [
     	{
         	type: Schema.ObjectId,
         	require: true,
-        	ref: "Option"
+        	ref: 'Option'
     	}
     ],
 	type: {
