@@ -6,13 +6,13 @@ module.exports = function(app) {
 
 	// Questions Routes
 	app.route('/questions')
-		.get(users.requiresLogin, users.hasAuthorization(['teacher','admin']), questions.list)
-		.post(users.requiresLogin, users.hasAuthorization(['teacher','admin']), questions.create);
+        .get(users.requiresLogin, users.hasAuthorization(['user','admin']), questions.list)
+		.post(users.requiresLogin, users.hasAuthorization(['user','admin']), questions.create);
 
 	app.route('/questions/:questionId')
-		.get(users.requiresLogin, users.hasAuthorization(['teacher','admin']), questions.read)
-		.put(users.requiresLogin, users.hasAuthorization(['teacher','admin']), questions.hasAuthorization, questions.update)
-		.delete(users.requiresLogin, questions.isTeacher, questions.hasAuthorization, questions.delete);
+        .get(users.requiresLogin, users.hasAuthorization(['user','admin']), questions.read)
+		.put(users.requiresLogin, users.hasAuthorization(['user','admin']), questions.hasAuthorization, questions.update)
+		.delete(users.requiresLogin, users.hasAuthorization(['user','admin']), questions.hasAuthorization, questions.delete);
 
 	// Finish by binding the Question middleware
 	app.param('questionId', questions.questionByID);
