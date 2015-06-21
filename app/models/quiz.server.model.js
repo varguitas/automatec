@@ -6,6 +6,8 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
+var Question = mongoose.model('Question');
+
 /**
  * Quiz Schema
  */
