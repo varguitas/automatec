@@ -16,6 +16,42 @@ var CourseSchema = new Schema({
 		required: 'Please fill Course name',
 		trim: true
 	},
+	description: {
+		type: String,
+		default: '',
+	},
+	quizzes: [
+  	{
+    	type: Schema.ObjectId,
+    	require: true,
+    	ref: 'Quiz'
+  	}
+  ],
+  groups: [
+  	{
+    	type: Schema.ObjectId,
+    	require: true,
+    	ref: 'Group'
+  	}
+  ],
+  subjects: [
+	{
+    	type: Schema.ObjectId,
+    	require: true,
+    	ref: 'Subject'
+  	}
+  ],
+  evaluations: [
+  	{
+    	type: Schema.ObjectId,
+    	require: true,
+    	ref: 'Evaluation'
+  	}
+  ],
+  modified: {
+  	type: Date,
+  	default: Date.now
+	},
 	created: {
 		type: Date,
 		default: Date.now

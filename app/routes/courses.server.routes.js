@@ -6,13 +6,13 @@ module.exports = function(app) {
 
 	// Courses Routes
 	app.route('/courses')
-		.get(courses.list)
-		.post(users.requiresLogin, courses.create);
+		.get(users.requiresLogin, users.hasAuthorization(['admin', 'teacher', 'user']), courses.list)
+		.post(users.requiresLogin, users.hasAuthorization(['admin']), courses.create);
 
 	app.route('/courses/:courseId')
-		.get(courses.read)
-		.put(users.requiresLogin, courses.hasAuthorization, courses.update)
-		.delete(users.requiresLogin, courses.hasAuthorization, courses.delete);
+		.get(users.requiresLogin, users.hasAuthorization(['admin', 'teacher', 'user']), courses.read)
+		.put(users.requiresLogin, courses.hasAuthorization, users.hasAuthorization(['admin']), courses.update)
+		.delete(users.requiresLogin, courses.hasAuthorization, users.hasAuthorization(['admin']), courses.delete);
 
 	// Finish by binding the Course middleware
 	app.param('courseId', courses.courseByID);
