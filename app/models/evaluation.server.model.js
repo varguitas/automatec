@@ -12,7 +12,7 @@ var mongoose = require('mongoose'),
 function dateValidator(value) {
   return this.startDate <= value;
 }
- 
+
 var EvaluationSchema = new Schema({
 	name: {
 		type: String,
@@ -25,19 +25,19 @@ var EvaluationSchema = new Schema({
 		default: '',
 	},
 	questions: [
-    	{
-        	type: Schema.ObjectId,
-        	require: true,
-        	ref: 'Question'
-    	}
-    ],
-    time: {
-    	type: Number,
-    	min: 1,
-    	required: true,
-    	default: 30
-    },
-    start_date: {
+		{
+			type: Schema.ObjectId,
+			require: true,
+			ref: 'Question'
+		}
+	],
+	time: {
+		type: Number,
+		min: 1,
+		required: true,
+		default: 30
+	},
+	start_date: {
 		type: Date,
 		required: true
 	},
@@ -56,24 +56,24 @@ var EvaluationSchema = new Schema({
 		ref: 'Group'
 	},
 	quiz_evaluation: [
-    	{
-        	type: Schema.ObjectId,
-        	require: true,
-        	ref: 'UserQuiz'
-    	}
-    ],
-    options_qty: {
-    	type: Number,
-    	min: 1,
-    	required: true,
-    	default: 5
-    },
-    evaluation_state: {
-    	type: String,
-    	required: true,
-    	match: ['pending', 'inprogress', 'finished']
-    },
-    modified: {
+		{
+			type: Schema.ObjectId,
+			require: true,
+			ref: 'UserQuiz'
+		}
+	],
+	options_qty: {
+		type: Number,
+		min: 1,
+		required: true,
+		default: 5
+	},
+	evaluation_state: {
+		type: String,
+		required: true,
+		match: ['pending', 'inprogress', 'finished']
+	},
+	modified: {
 		type: Date,
 		default: Date.now
 	},
