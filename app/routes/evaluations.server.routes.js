@@ -6,13 +6,13 @@ module.exports = function(app) {
 
 	// Evaluations Routes
 	app.route('/evaluations')
-		.get(evaluations.list)
-		.post(users.requiresLogin, evaluations.create);
+		.get(users.requiresLogin, users.hasAuthorization(['admin', 'teacher']), evaluations.hasAuthorization, evaluations.list)
+		.post(users.requiresLogin, users.hasAuthorization(['admin', 'teacher']), evaluations.create);
 
 	app.route('/evaluations/:evaluationId')
-		.get(evaluations.read)
-		.put(users.requiresLogin, evaluations.hasAuthorization, evaluations.update)
-		.delete(users.requiresLogin, evaluations.hasAuthorization, evaluations.delete);
+		.get(users.hasAuthorization(['admin', 'teacher']), evaluations.hasAuthorization, evaluations.read)
+		.put(users.requiresLogin, evaluations.hasAuthorization, users.hasAuthorization(['admin', 'teacher']), evaluations.update)
+		.delete(users.requiresLogin, evaluations.hasAuthorization, users.hasAuthorization(['admin', 'teacher']), evaluations.delete);
 
 	// Finish by binding the Evaluation middleware
 	app.param('evaluationId', evaluations.evaluationByID);
