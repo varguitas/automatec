@@ -16,6 +16,29 @@ var GroupSchema = new Schema({
 		required: 'Please fill Group name',
 		trim: true
 	},
+		description: {
+		type: String,
+		default: ''
+	},
+	period: {
+		type: String,
+		default: ''
+	},
+	students: [{
+		user: {
+			type: Schema.ObjectId,
+			require: true,
+			ref: 'User'
+		},
+		state: {
+			type: String,
+			default: ''
+		}
+	}],
+	modified: {
+		type: Date,
+		default: Date.now
+	},
 	created: {
 		type: Date,
 		default: Date.now
