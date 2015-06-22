@@ -25,11 +25,11 @@ var EvaluationSchema = new Schema({
 		default: '',
 	},
 	questions: [
-		{
-			type: Schema.ObjectId,
-			require: true,
-			ref: 'Question'
-		}
+	{
+		type: Schema.ObjectId,
+		require: true,
+		ref: 'Question'
+	}
 	],
 	time: {
 		type: Number,
@@ -56,11 +56,11 @@ var EvaluationSchema = new Schema({
 		ref: 'Group'
 	},
 	quiz_evaluation: [
-		{
-			type: Schema.ObjectId,
-			require: true,
-			ref: 'UserQuiz'
-		}
+	{
+		type: Schema.ObjectId,
+		require: true,
+		ref: 'UserQuiz'
+	}
 	],
 	options_qty: {
 		type: Number,
