@@ -1,0 +1,50 @@
+
+
+<section data-ng-controller="crearQuizController" data-ng-init="iniciar()">
+	
+    <div class="page-header">
+        <h1>Nuevo Quiz</h1>
+    </div>
+    <div class="list-group" >
+    	<h3>Descripción </h3>
+    	<textarea rows="4" cols="50" id="texto_descripcion" name="texto_descripcion"></textarea>
+		<h3>Temas</h3>
+
+        <select class="selectpicker" data-style="btn-primary">
+    	   <option  ng-repeat="lis in lista_temas" >
+    	    	{{lis.Descripcion}}
+    	   </option>
+      	</select>
+
+    	<br>
+    	<br>
+    	
+        <table class="table">
+            <tr>
+                <th class="danger" class="panel panel-default">Preguntas</th>
+            </tr>
+        
+            <tbody>
+                <tr  ng-repeat="inf in info">
+                    <th class="active" class="panel panel-default" width="45%">
+                        {{inf.Descripcion}}       
+                    </th>
+                    <th width="10%" class="active" class="panel panel-default">
+         		         <a href="">Preview</a><!--  Referencia a una vista previa de la pregunta por medio del href-->  
+                    </th>
+                    <th class="active"><input type="checkbox" name="option1" value="Milk">
+                    </th>
+                
+                </tr>
+            </tbody>
+        </table>
+
+    	<p align="right">
+    		<button type="button"  class="btn btn-large btn-primary" ng-click = "validar()" >Crear Quiz
+             <!--  Este boton ejecuta la funcion de guardar los datos ingresados para crear un quiz-->
+             </button> 
+    	</p>
+    	
+    </div>
+    
+</section>

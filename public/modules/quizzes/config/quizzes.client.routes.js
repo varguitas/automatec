@@ -20,6 +20,10 @@ angular.module('quizzes').config(['$stateProvider',
 		state('editQuiz', {
 			url: '/quizzes/:quizId/edit',
 			templateUrl: 'modules/quizzes/views/edit-quiz.client.view.html'
+		}).
+		state('crearQuiz', {
+			url: '/crearQuiz',
+			templateUrl: 'modules/quizzes/views/crearQuiz-quiz.client.view.html'
 		});
 	}
 ]);

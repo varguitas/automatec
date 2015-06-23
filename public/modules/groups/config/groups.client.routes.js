@@ -20,6 +20,10 @@ angular.module('groups').config(['$stateProvider',
 		state('editGroup', {
 			url: '/groups/:groupId/edit',
 			templateUrl: 'modules/groups/views/edit-group.client.view.html'
+		}).
+		state('administrarGrupos', {
+			url: '/administrarGrupos',
+			templateUrl: 'modules/groups/views/administrarGrupos-groups.client.view.html'
 		});
 	}
 ]);

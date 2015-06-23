@@ -1,0 +1,64 @@
+<section data-ng-controller="quicesPorCursoController" data-ng-init="iniciar()">
+	<div class="page-header">
+        <h1>{{nombreCurso}}</h1>
+    </div>
+
+    
+    <table class="table">
+    
+        <tr>
+            <th class="danger" class="panel panel-default">Descripcion</th>
+            <th class="danger" class="panel panel-default">Tema</th>
+            
+        </tr>
+    
+    <tbody>
+        <tr  ng-repeat="inf in info">
+        <th class="active" class="panel panel-default">
+        <a ng-click="funcion(inf.quiz_id)">{{inf.description}} </a>
+        
+        </th>
+        <th class="active" class="panel panel-default">
+        {{inf.tema}}        
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+
+<button type="button" class="btn btn-large btn-primary" onclick="location.href='/#!/courses/create'" >Agregar Quiz</button>
+<br>
+<br>
+<br>
+<table class="table" ng-model="filtro">
+    
+        <tr>
+            <th class="danger" class="panel panel-default">Lista Temas</th>
+            <th class="danger" class="panel panel-default">Eliminar Temas</th>
+            
+        </tr>
+    
+    <tbody>
+        <tr  ng-repeat="tema in temas | filter:{id_curso:filtro}" >
+        <th class="active" class="panel panel-default">
+        {{tema.nombre_tema}} 
+        </th>
+        <th class="active" class="panel panel-default">
+            <span class="glyphicon glyphicon-remove" onclick="location.href='/#!/courses/create'"></span>
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+
+    
+    <button type="button" class="btn btn-large btn-primary" onclick="location.href='/#!/courses/create'" >Agregar Tema</button>
+    <br>
+    <br>
+    <br>
+    <button type="button" class="btn btn-large btn-primary" ng-click="print()" >Asignar Evaluacion</button>
+    <button type="button" class="btn btn-large btn-primary" ng-click="print()" >Administrar Grupos</button>
+</section>
+
+
+

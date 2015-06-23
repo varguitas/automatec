@@ -1,0 +1,34 @@
+<section data-ng-controller="administrarGruposController" data-ng-init="iniciar()">
+	<div class="page-header">
+        <h1>Administración Grupos</h1>
+    </div>
+
+
+    <table class="table">
+        <tr>
+            <th class="danger" class="panel panel-default">Grupos</th>
+        </tr>
+        <tbody>
+        <tr  ng-repeat="inf in info">
+            <th class="active" class="panel panel-default" width="100%">
+                <a href=""> {{inf.id_grupo}} </a> <!-- Redirecciona por medio del href a la vista del grupo seleccionado  -->
+            </th>
+            <th class="active" class="panel panel-default" >
+                <span  class="glyphicon glyphicon-remove" onclick="location.href='/#!/courses/create'" ></span>
+            </th>
+        
+        </tr>
+        </tbody>
+    </table>
+	<p align="left" >
+		<button type="button"  class="btn btn-large btn-primary" ng-click="print()" >
+        <!-- Este boton redirecciona a una vista de creacion de un grupo nuevo  -->
+        Crear Grupos
+        </button>
+	</p>    
+</section>
+
+
+
+
+<!--  -->
