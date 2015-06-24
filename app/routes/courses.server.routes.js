@@ -7,13 +7,14 @@ module.exports = function(app) {
 	// Courses Routes
 	app.route('/courses')
 		.get(courses.list)
-		.post(users.requiresLogin, courses.create);
+		.post(users.requiresLogin, users.hasAuthorization(['admin', 'teacher']), courses.create);
 
 	app.route('/courses/:courseId')
 		.get(courses.read)
-		.put(users.requiresLogin, courses.hasAuthorization, courses.update)
-		.delete(users.requiresLogin, courses.hasAuthorization, courses.delete);
+		.put(users.requiresLogin, users.hasAuthorization(['admin', 'teacher']), courses.hasAuthorization, courses.update)
+		.delete(users.requiresLogin, users.hasAuthorization(['admin', 'teacher']), courses.hasAuthorization, courses.delete);
 
 	// Finish by binding the Course middleware
 	app.param('courseId', courses.courseByID);
 };
+
