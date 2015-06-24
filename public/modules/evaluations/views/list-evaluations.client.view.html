@@ -11,6 +11,9 @@
 				<span data-ng-bind="evaluation.user.displayName"></span>
 			</small>
 			<h4 class="list-group-item-heading" data-ng-bind="evaluation.name"></h4>
+          <p data-ng-bind="evaluation.description"></p>
++         <p data-ng-bind="evaluation.time_method"></p>
+          <p data-ng-bind="evaluation.evaluation_state"></p>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!evaluations.$resolved || evaluations.length">

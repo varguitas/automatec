@@ -10,6 +10,16 @@ angular.module('evaluations').controller('EvaluationsController', ['$scope', '$s
 			// Create new Evaluation object
 			var evaluation = new Evaluations ({
 				name: this.name
+				description: this.description
+				questions: this.questions
+				time: this.time
+				start_date: this.start_date
+				end_date: this.end_date
+				time_method: this.time_method
+				group: this.group
+				quiz_evaluation: this.quiz_evaluation
+				options_qty: this.options_qty
+				evaluation_state: this.evaluation_state
 			});
 
 			// Redirect after save
