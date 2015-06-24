@@ -9,6 +9,8 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
 		$scope.create = function() {
 			// Create new Course object
 			var course = new Courses ({
+				user: this.user
+				created: this.created
 				name: this.name
 			});
 
