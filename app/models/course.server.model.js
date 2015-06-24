@@ -13,7 +13,7 @@ var CourseSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill Course name',
+		required: 'Debe especificar el nombre del curso.',
 		trim: true
 	},
 	created: {
