@@ -47,6 +47,7 @@ function getAllUsersRoles() {
         { },
 		{  "username": 1, "firstName": 1, "lastName": 1 , "roles": 1} );
 }
+
 user.server.controller.prototype ={
 	addRole: function(req,res){
 	var id = req.body.userOid;
