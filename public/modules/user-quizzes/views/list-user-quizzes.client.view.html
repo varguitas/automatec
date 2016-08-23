@@ -1,0 +1,19 @@
+<section data-ng-controller="UserQuizzesController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>User quizzes</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="userQuiz in userQuizzes" data-ng-href="#!/user-quizzes/{{userQuiz._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="userQuiz.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="userQuiz.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="userQuiz.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!userQuizzes.$resolved || userQuizzes.length">
+    	No User quizzes yet, why don't you <a href="/#!/user-quizzes/create">create one</a>?
+    </div>
+</section>
